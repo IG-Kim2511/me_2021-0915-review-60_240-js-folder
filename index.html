@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class</title>
+    <style>
+ 
+        .world {
+            width: 100px;
+            height: 150px;
+         
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 0.5em;
+            /* background: #fff000; */
+            perspective: 500px;
+        }
+        .card-side {
+            width: 100px;
+            height: 150px;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;    
+
+            margin: -75px 0 0 -50px; /* 🦄 중앙선 맞추기 */
+
+            border-radius: 0.5em;
+            font-size: 1.5rem;
+            -webkit-backface-visibility: hidden;   /* 🦄 */
+            backface-visibility: hidden;   /* 🦄 */
+            transition: 1s;
+        }
+        .card-side-front {
+            z-index: 1;
+            background: yellowgreen;
+        }
+        .card-side-back {
+            background: red;
+            transform: rotateY(180deg);
+        }
+        .world:hover .card-side-front {
+            transform: rotateY(180deg);
+        }
+        .world:hover .card-side-back {
+            transform: rotateY(360deg);
+        }
+
+
+    </style>
+</head>
+<body>
+    <script>
+
+
+      // 🍀
+    
+        class Card {
+            constructor(num, color){
+            
+
+                this.num = num;
+                this.color = color;
+
+                const mainElem = document.createElement('div');
+                mainElem.innerHTML = `
+                <div class="world">
+                    <div class="card-side card-side-front">F</div>
+                    <div class="card-side card-side-back">B</div>
+                </div>
+                `;
+                document.body.appendChild(mainElem);
+                
+            }
+        }
+
+        // 
+
+        const card1 = new Card(1, 'green');
+        const card2 = new Card(7, 'blue');
+
+        // btnC.addEventListener('click',()=>{  
+        // });
+
+
+    </script>
+</body>
+</html>
